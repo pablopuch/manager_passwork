@@ -64,3 +64,45 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Installation process
+
+Clone the repository
+
+    git clone https://github.com/pablopuch/PassWork.git
+
+Switch to the repo folder
+
+    cd PassWork/backend/
+
+Install all the dependencies using composer
+
+    composer install
+
+Copy the example env file and make the required configuration changes in the .env file
+
+    cp .env.example .env
+
+Generate a random key
+
+    php artisan key:generate
+
+Run the database migrations (**Set the database connection in .env before migrating**)
+
+    php artisan migrate
+
+Run seed your database
+
+    php artisan db:seed
+
+Generate a key for JWT
+
+    php artisan jwt:secret
+
+Symbolic link in your application's
+
+    php artisan storage:link
+
+Start the local development server
+
+    php artisan serve
