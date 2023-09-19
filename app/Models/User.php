@@ -42,4 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //relations
+    public function passworks(){
+        return $this->hasMany(Passwork::class);
+    }
+
+    public function groups(){
+        return $this->hasMany(Group::class);
+    }
 }
