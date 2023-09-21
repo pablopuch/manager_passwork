@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PassworkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
+Route::resource('passgroups', App\Http\Controllers\PassgroupController::class);
+Route::resource('passworks', App\Http\Controllers\PassworkController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

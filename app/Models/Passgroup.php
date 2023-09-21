@@ -4,37 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
- * Class Passwork
+ * Class Passgroup
  *
  * @property $id
- * @property $passgroup_id
  * @property $user_id
  * @property $name
- * @property $user_pass
- * @property $email_pass
- * @property $password_pass
- * @property $link
- * @property $note
  * @property $url_img
- * @property $favourite
  * @property $created_at
  * @property $updated_at
  *
- * @property Passgroup $passgroup
+ * @property Passwork[] $passworks
  * @property User $user
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Passwork extends Model
+class Passgroup extends Model
 {
     
     static $rules = [
 		'user_id' => 'required',
 		'name' => 'required',
-		'user_pass' => 'required',
-		'password_pass' => 'required',
-		'favourite' => 'required',
     ];
 
     protected $perPage = 20;
@@ -44,15 +35,15 @@ class Passwork extends Model
      *
      * @var array
      */
-    protected $fillable = ['passgroup_id','user_id','name','user_pass','email_pass','password_pass','link','note','url_img','favourite'];
+    protected $fillable = ['user_id','name','url_img'];
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function passgroup()
+    public function passworks()
     {
-        return $this->hasOne('App\Models\Passgroup', 'id', 'passgroup_id');
+        return $this->hasMany('App\Models\Passwork', 'passgroup_id', 'id');
     }
     
     /**

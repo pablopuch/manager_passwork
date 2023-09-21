@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('passworks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('passgroup_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->string('name')->default("Nueva contraseña");
             $table->string('user_pass');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('passgroup_id')->references('id')->on('passgroups');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
