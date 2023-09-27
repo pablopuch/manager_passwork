@@ -21,14 +21,6 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Passgroup Id:</strong>
-                            {{ $passwork->passgroup_id }}
-                        </div>
-                        <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $passwork->user_id }}
-                        </div>
-                        <div class="form-group">
                             <strong>Name:</strong>
                             {{ $passwork->name }}
                         </div>
@@ -43,22 +35,6 @@
                         <div class="form-group">
                             <strong>Password Pass:</strong>
                             {{ $passwork->password_pass }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Link:</strong>
-                            {{ $passwork->link }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Note:</strong>
-                            {{ $passwork->note }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Url Img:</strong>
-                            {{ $passwork->url_img }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Favourite:</strong>
-                            {{ $passwork->favourite }}
                         </div>
 
                     </div>

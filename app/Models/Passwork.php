@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -28,13 +29,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Passwork extends Model
 {
+    use HasFactory;
     
     static $rules = [
 		'user_id' => 'required',
 		'name' => 'required',
 		'user_pass' => 'required',
 		'password_pass' => 'required',
-		'favourite' => 'required',
+		// 'favourite' => 'required',
     ];
 
     protected $perPage = 20;

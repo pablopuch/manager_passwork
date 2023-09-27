@@ -6,6 +6,8 @@ use App\Models\Passwork;
 use App\Models\Passgroup;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Class PassworkController
@@ -37,9 +39,14 @@ class PassworkController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+
         $passwork = new Passwork();
+        
+        $passwork->user_id = $user->id; // Asignar el ID del usuario
 
         $passgroups = Passgroup::pluck('name','id');
+
         $users = User::pluck('name','id');
 
         return view('passwork.create', compact('passwork','passgroups','users'));
@@ -71,7 +78,11 @@ class PassworkController extends Controller
     {
         $passwork = Passwork::find($id);
 
-        return view('passwork.show', compact('passwork'));
+        $passgroups = Passgroup::pluck('name','id');
+        
+        $users = User::pluck('name','id');
+
+        return view('passwork.show', compact('passwork','passgroups','users'));
     }
 
     /**

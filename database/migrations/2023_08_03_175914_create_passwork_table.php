@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->string('note')->nullable();
             $table->string('url_img')->nullable();
-            $table->boolean('favourite')->default(false);
+            $table->boolean('favourite')->nullable()->default(false);
             $table->timestamps();
 
             // Foreign keys

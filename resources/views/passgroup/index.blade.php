@@ -34,7 +34,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-										<th>User</th>
+										{{-- <th>User</th> --}}
 										<th>Name</th>
 										<th>Url Img</th>
 
@@ -44,7 +44,7 @@
                                 <tbody>
                                     @foreach ($passgroups as $passgroup)
                                         <tr>                                            
-											<td>{{ $passgroup->user->name }}</td>
+											{{-- <td>{{ $passgroup->user->name }}</td> --}}
 											<td>{{ $passgroup->name }}</td>
 											<td>{{ $passgroup->url_img }}</td>
 

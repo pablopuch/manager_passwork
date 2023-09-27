@@ -22,7 +22,7 @@
                         
                         <div class="form-group">
                             <strong>User Id:</strong>
-                            {{ $passgroup->user_id }}
+                            {{ $passgroup->user->name }}
                         </div>
                         <div class="form-group">
                             <strong>Name:</strong>

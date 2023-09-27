@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Passgroup;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Class PassgroupController
@@ -34,8 +36,14 @@ class PassgroupController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+
         $passgroup = new Passgroup();
+
+        $passgroup->user_id = $user->id; // Asignar el ID del usuario
+
         $users = User::pluck('name','id');
+
         return view('passgroup.create', compact('passgroup','users'));
     }
 
@@ -65,7 +73,9 @@ class PassgroupController extends Controller
     {
         $passgroup = Passgroup::find($id);
 
-        return view('passgroup.show', compact('passgroup'));
+        $users = User::pluck('name','id');
+
+        return view('passgroup.show', compact('passgroup', 'users'));
     }
 
     /**
@@ -77,6 +87,7 @@ class PassgroupController extends Controller
     public function edit($id)
     {
         $passgroup = Passgroup::find($id);
+        
         $users = User::pluck('name','id');
 
         return view('passgroup.edit', compact('passgroup','users'));

@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         User::factory(3)->create()->each(function (User $user) {
 
             $user->passgroups()->saveMany(Passgroup::factory(2)->make());

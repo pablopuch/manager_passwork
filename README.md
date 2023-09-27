@@ -106,3 +106,10 @@ Symbolic link in your application's
 Start the local development server
 
     php artisan serve
+
+
+
+https://www.youtube.com/watch?v=C98LvIbPSf0
+
+https://www.youtube.com/watch?v=9DU7WLZeam8&t=6865s
+

@@ -31,19 +31,19 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-dark table-hover">
                                 <thead class="thead">
                                     <tr>                                        
-										<th>Passgroup</th>
-										<th>User</th>
+										{{-- <th>Passgroup</th>
+										<th>User</th> --}}
 										<th>Name</th>
 										<th>User Pass</th>
 										<th>Email Pass</th>
 										<th>Password Pass</th>
-										<th>Link</th>
+										{{-- <th>Link</th>
 										<th>Note</th>
 										<th>Url Img</th>
-										<th>Favourite</th>
+										<th>Favourite</th> --}}
 
                                         <th></th>
                                     </tr>
@@ -51,16 +51,16 @@
                                 <tbody>
                                     @foreach ($passworks as $passwork)
                                         <tr>                                            
-											<td>{{ $passwork->passgroup->name }}</td>
-											<td>{{ $passwork->user->name }}</td>
+											{{-- <td>{{ $passwork->passgroup->name }}</td>
+											<td>{{ $passwork->user->name }}</td> --}}
 											<td>{{ $passwork->name }}</td>
 											<td>{{ $passwork->user_pass }}</td>
 											<td>{{ $passwork->email_pass }}</td>
 											<td>{{ $passwork->password_pass }}</td>
-											<td>{{ $passwork->link }}</td>
+											{{-- <td>{{ $passwork->link }}</td>
 											<td>{{ $passwork->note }}</td>
 											<td>{{ $passwork->url_img }}</td>
-											<td>{{ $passwork->favourite }}</td>
+											<td>{{ $passwork->favourite }}</td> --}}
 
                                             <td>
                                                 <form action="{{ route('passworks.destroy',$passwork->id) }}" method="POST">

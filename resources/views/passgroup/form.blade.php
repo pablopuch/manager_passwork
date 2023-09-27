@@ -1,11 +1,10 @@
 <div class="box box-info padding-1">
     <div class="box-body">
         
-        <div class="form-group">
-            {{ Form::label('user_id') }}
-            {{ Form::select('user_id', $users, $passgroup->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
-            {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
+        <div class="form-group" style="display: none;">
+            {{ Form::text('user_id', Auth::user()->id) }}
         </div>
+
         <div class="form-group">
             {{ Form::label('name') }}
             {{ Form::text('name', $passgroup->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
