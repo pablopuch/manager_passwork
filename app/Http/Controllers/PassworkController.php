@@ -20,17 +20,31 @@ class PassworkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    // public function index()
+    // {
+    //     $passworks = Passwork::paginate();
+    //     $passgroups = Passgroup::pluck('name','id');
+    //     $users = User::pluck('name','id');
+    //     return view('passwork.index', compact('passworks','passgroups','users'))
+    //         ->with('i', (request()->input('page', 1) - 1) * $passworks->perPage());
+    // }
+
+    public function index(Request $request)
     {
-        $passworks = Passwork::paginate();
+        if ($request->filled('search')) {
+            $searchTerm = $request->input('search');
 
-        $passgroups = Passgroup::pluck('name','id');
+            $passworks = Passwork::where('name', 'LIKE', $searchTerm . '%')->paginate(10); // Cambia el número según tus necesidades
+        } else {
+            $passworks = Passwork::paginate(10); // Cambia 10 al número deseado por página
+        }
 
-        $users = User::pluck('name','id');
+        $passgroups = Passgroup::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
 
-        return view('passwork.index', compact('passworks','passgroups','users'))
-            ->with('i', (request()->input('page', 1) - 1) * $passworks->perPage());
+        return view('passwork.index', compact('passworks', 'passgroups', 'users'));
     }
+
 
     /**
      * Show the form for creating a new resource.

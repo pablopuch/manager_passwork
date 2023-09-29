@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 /**
  * Class Passwork
@@ -29,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Passwork extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
     
     static $rules = [
 		'user_id' => 'required',
@@ -63,6 +64,16 @@ class Passwork extends Model
     public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
+    
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+            'user_pass' => $this->user_pass,
+            'email_pass' => $this->email_pass,
+            'password_pass' => $this->password_pass
+        ];
     }
     
 

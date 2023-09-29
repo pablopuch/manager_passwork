@@ -14,29 +14,37 @@
                             <span class="card-title">{{ __('Show') }} Passwork</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('passworks.index') }}"> {{ __('Back') }}</a>
+                            <form action="{{ route('passworks.destroy',$passwork->id) }}" method="POST">
+                                <a class="btn btn-primary" href="{{ route('passworks.index') }}"><i class="bi bi-arrow-left"></i> {{ __('Back') }}</a>
+                                <a class="btn btn-success" href="{{ route('passworks.edit',$passwork->id) }}"><i class="bi bi-pencil-square"></i> {{ __('Edit') }}</a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> {{ __('Delete') }}</button>
+                            </form> 
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Name:</strong>
-                            {{ $passwork->name }}
-                        </div>
-                        <div class="form-group">
-                            <strong>User Pass:</strong>
-                            {{ $passwork->user_pass }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Email Pass:</strong>
-                            {{ $passwork->email_pass }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Password Pass:</strong>
-                            {{ $passwork->password_pass }}
-                        </div>
-
+                        <table class="table">
+                                <thead class="thead">
+                                    <tr>                                        
+                                        <th><strong>Name</strong></th>
+                                        <th><strong>User Pass</strong></th>
+										<th><strong>Email Pass</strong></th>
+                                        <th><strong>Password Pass</strong></th>
+                                        <th><strong>URL</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+										<td>{{ $passwork->name }}</td>
+                                        <td>{{ $passwork->user_pass }}</td>
+										<td>{{ $passwork->email_pass }}</td>
+                                        <td>{{ $passwork->password_pass }}</td>
+                                        <td><a class="link-opacity-10" target="_blank" href="{{ $passwork->link }}">{{ $passwork->link }}</a></td>
+                                    </tr>
+                                </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

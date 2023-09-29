@@ -7,7 +7,6 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -16,9 +15,20 @@
                                 {{ __('Passwork') }}
                             </span>
 
+                                <div class="mb-4" style="max-width: 20rem;">
+                                    <form method="GET" role="form">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="search" value="{{ request()->get('search') }}" placeholder="Buscar..." style="margin-right: 10px"/>
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary float-right">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
                              <div class="float-right">
-                                <a href="{{ route('passworks.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                <a href="{{ route('passworks.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
+                                  {{ __('Crear nueva') }}
                                 </a>
                               </div>
                         </div>
@@ -31,44 +41,24 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-dark table-hover">
+                            <table class="table">
                                 <thead class="thead">
                                     <tr>                                        
-										{{-- <th>Passgroup</th>
-										<th>User</th> --}}
-										<th>Name</th>
-										<th>User Pass</th>
+										{{-- <th>IMG</th> --}}
+                                        <th>Name</th>
 										<th>Email Pass</th>
-										<th>Password Pass</th>
-										{{-- <th>Link</th>
-										<th>Note</th>
-										<th>Url Img</th>
-										<th>Favourite</th> --}}
-
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($passworks as $passwork)
-                                        <tr>                                            
-											{{-- <td>{{ $passwork->passgroup->name }}</td>
-											<td>{{ $passwork->user->name }}</td> --}}
+                                        <tr>
+                                            {{-- <td>{{ $passwork->url_img }}</td>                                             --}}
 											<td>{{ $passwork->name }}</td>
-											<td>{{ $passwork->user_pass }}</td>
 											<td>{{ $passwork->email_pass }}</td>
-											<td>{{ $passwork->password_pass }}</td>
-											{{-- <td>{{ $passwork->link }}</td>
-											<td>{{ $passwork->note }}</td>
-											<td>{{ $passwork->url_img }}</td>
-											<td>{{ $passwork->favourite }}</td> --}}
-
                                             <td>
                                                 <form action="{{ route('passworks.destroy',$passwork->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('passworks.show',$passwork->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('passworks.edit',$passwork->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                    <a class="btn btn-primary" href="{{ route('passworks.show',$passwork->id) }}">{{ __('Ver') }}</a>
                                                 </form>
                                             </td>
                                         </tr>
@@ -78,8 +68,24 @@
                         </div>
                     </div>
                 </div>
-                {!! $passworks->links() !!}
-            </div>
+                
+                    {{-- @foreach ($passworks as $passwork)
+                        <div class="col-2">
+                            <div class="card border-primary mb-3 text-center" style="max-width: 20rem;">
+                                
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ $passwork->name }}</h1>
+                                        <form action="{{ route('passworks.destroy',$passwork->id) }}" method="POST">
+                                            <a class="btn btn-sm btn-primary " href="{{ route('passworks.show',$passwork->id) }}">{{ __('Show') }}</a>
+                                        </form>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    @endforeach --}}
+
+                <div style="margin-top: 30px">{!! $passworks->links() !!}</div>
+
         </div>
     </div>
 @endsection

@@ -36,7 +36,7 @@
 
 
 
-        <div class="form-group" style="display: none;">
+        <div class="form-group">
             {{ Form::label('link') }}
             {{ Form::text('link', $passwork->link, ['class' => 'form-control' . ($errors->has('link') ? ' is-invalid' : ''), 'placeholder' => 'Link']) }}
             {!! $errors->first('link', '<div class="invalid-feedback">:message</div>') !!}

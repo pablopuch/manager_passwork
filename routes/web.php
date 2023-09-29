@@ -24,8 +24,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('passgroups', App\Http\Controllers\PassgroupController::class)->middleware('auth');
-Route::resource('passworks', App\Http\Controllers\PassworkController::class)->middleware('auth');
+Route::resource('passgroups', PassgroupController::class)->middleware('auth');
+Route::resource('passworks', PassworkController::class)->middleware('auth');
+
 
 Route::get('/home', [PassworkController::class, 'index'])->name('home');
 
