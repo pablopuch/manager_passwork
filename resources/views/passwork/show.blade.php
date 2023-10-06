@@ -24,7 +24,6 @@
                         </div>
                     </div>
 
-                    <div class="card-body">
                         <table class="table">
                                 <thead class="thead">
                                     <tr>                                        
@@ -45,7 +44,6 @@
                                     </tr>
                                 </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
         </div>

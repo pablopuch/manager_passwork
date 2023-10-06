@@ -20,23 +20,17 @@ class PassworkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     $passworks = Passwork::paginate();
-    //     $passgroups = Passgroup::pluck('name','id');
-    //     $users = User::pluck('name','id');
-    //     return view('passwork.index', compact('passworks','passgroups','users'))
-    //         ->with('i', (request()->input('page', 1) - 1) * $passworks->perPage());
-    // }
-
     public function index(Request $request)
     {
         if ($request->filled('search')) {
             $searchTerm = $request->input('search');
 
-            $passworks = Passwork::where('name', 'LIKE', $searchTerm . '%')->paginate(10); // Cambia el número según tus necesidades
+            $passworks = Passwork::where('name', 'LIKE', $searchTerm . '%')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10); // Cambia el número según tus necesidades
         } else {
-            $passworks = Passwork::paginate(10); // Cambia 10 al número deseado por página
+            $passworks = Passwork::orderBy('created_at', 'desc') // Ordena de forma descendente por fecha de creación
+            ->paginate(10);
         }
 
         $passgroups = Passgroup::pluck('name', 'id');

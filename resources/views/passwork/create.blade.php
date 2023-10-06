@@ -13,7 +13,12 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Passwork</span>
+                        <div class="float-left">
+                            <span class="card-title">{{ __('Create') }} Passwork</span>
+                        </div>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('passworks.index') }}"><i class="bi bi-arrow-left"></i> {{ __('Back') }}</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('passworks.store') }}"  role="form" enctype="multipart/form-data">
