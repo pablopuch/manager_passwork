@@ -42,18 +42,10 @@
 
                         <div class="table-responsive">
                             <table class="table">
-                                <thead class="thead">
-                                    <tr>                                        
-										{{-- <th>IMG</th> --}}
-                                        <th>Name</th>
-										<th>Email Pass</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
                                 <tbody>
                                     @foreach ($passworks as $passwork)
                                         <tr>
-                                            {{-- <td>{{ $passwork->url_img }}</td>                                             --}}
+                                            {{-- <td>{{ $passwork->url_img }}</td> --}}
 											<td>{{ $passwork->name }}</td>
 											<td>{{ $passwork->email_pass }}</td>
                                             <td>
@@ -66,41 +58,66 @@
                                 </tbody>
                             </table>
                         </div>
-
-                        
-                            {{-- <div class="container">
-                                <div class="jumbotron mt-4 text-center ">
-                                    <h1>Create a Password</h1>
-                                    
-                                    <div class="form-check container mb-2">
-                                        <input id="lowercase" type="checkbox" class="form-check-input" checked="true">
-                                        <label for="lowercase" class="form-check-label">Mayusculas</label>
-                                        <br>
-                                        <input id="uppercase" type="checkbox" class="form-check-input" checked="true">
-                                        <label for="uppercase" class="form-check-label">Minusculas</label>
-                                        <br>
-                                        <input id="numbers" type="checkbox" class="form-check-input" checked="true">
-                                        <label for="numbers" class="form-check-label">Numeros</label>
-                                        <br>
-                                        <input id="special" type="checkbox" class="form-check-input" checked="true">
-                                        <label for="special" class="form-check-label">Simbolos (!@#$...)</label>
-                                        <br>
-                                        <input id="len" type="number" name="length" max="20" size="5" value="10" style="width: 100px;">
-                                        <label for="len" class="form-number-label" >Password Length</label>  
-                                    </div>
-                                    
-                                    <button id="createPassword" class="btn btn-primary btn-lg col-lg-4 col-md-6 col-sm-8 col-xs-12 mt-4">Generate Password</button>
-                                    <h3 id="password"></h3>
-                                </div>
-                            </div> --}}
-
-
-                    </div>
                 </div>
+            </div>
         </div>
     </div>
 
-            <div class="d-flex justify-content-center" style="margin-top: 10px">{!! $passworks->links() !!}</div>
+    {{-- Quiero crear un generador de contraseñas en en laravel 10, 
+    con un pequeño formulario donde el usurario pueda decir si 
+    quiere letras, numero, símbolos y la cantidad de caracteres --}}
+
+        <div class="container" style="margin-top: 10px">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" action="{{ url('/generar-contrasena') }}">
+                                @csrf
+
+                                <h2>Personalice su contraseña</h2>
+
+
+                                <div class="form-group">
+                                    <label for="length">Longitud de la contraseña</label>
+                                    <br>
+                                    <input value="12" name="length" class="lp-custom-range__number" step="1" id="length" type="number" min="4" max="50">
+                                    <input type="range" class="lp-custom-form-range" id="passwordLength" name="passwordLength" min="4" max="50" step="1" value="12">
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="form-check">
+                                        <input type="checkbox" id="use_letters" name="use_letters" class="form-check-input" checked>
+                                        <label class="form-check-label" for="use_letters">Mayúsculas</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" id="use_letters" name="use_letters" class="form-check-input" checked>
+                                        <label class="form-check-label" for="use_letters">Minúsculas</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" id="use_numbers" name="use_numbers" class="form-check-input" checked>
+                                        <label class="form-check-label" for="use_numbers">Números</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" id="use_symbols" name="use_symbols" class="form-check-input" checked>
+                                        <label class="form-check-label" for="use_symbols">Símbolos</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="generated_password" name="generated_password" class="form-control" readonly>
+                                </div>
+                                <button type="button" id="generate_password" class="btn btn-primary" style="margin-top: 10px">Generar Contraseña</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="d-flex justify-content-center" style="margin-top: 30px">{!! $passworks->links() !!}</div>
 
         </div>
     </div>

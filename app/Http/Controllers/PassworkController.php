@@ -7,6 +7,7 @@ use App\Models\Passgroup;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 
 /**
@@ -70,6 +71,11 @@ class PassworkController extends Controller
     {
         request()->validate(Passwork::$rules);
 
+        // Encriptar la contraseña antes de guardarla
+        $request->merge([
+            'password_pass' => Crypt::encrypt($request->input('password_pass')),
+        ]);
+
         $passwork = Passwork::create($request->all());
 
         return redirect()->route('passworks.index')
@@ -85,6 +91,9 @@ class PassworkController extends Controller
     public function show($id)
     {
         $passwork = Passwork::find($id);
+
+        // Descifrar la contraseña antes de mostrarla
+        $passwork->password_pass = Crypt::decrypt($passwork->password_pass);
 
         $passgroups = Passgroup::pluck('name','id');
         
@@ -121,6 +130,11 @@ class PassworkController extends Controller
     public function update(Request $request, Passwork $passwork)
     {
         request()->validate(Passwork::$rules);
+
+        // Encriptar la contraseña antes de actualizarla
+        $request->merge([
+            'password_pass' => Crypt::encrypt($request->input('password_pass')),
+        ]);
 
         $passwork->update($request->all());
 

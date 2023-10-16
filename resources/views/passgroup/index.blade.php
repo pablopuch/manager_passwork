@@ -37,7 +37,6 @@
 										{{-- <th>User</th> --}}
 										<th>Name</th>
 										<th>Url Img</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>
