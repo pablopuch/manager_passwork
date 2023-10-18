@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 
 /**
@@ -38,6 +40,17 @@ class PassworkController extends Controller
         $users = User::pluck('name', 'id');
 
         return view('passwork.index', compact('passworks', 'passgroups', 'users'));
+    }
+
+    public function pdf()
+    {
+        $passworks = Passwork::paginate();
+
+        $pdf = Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        $pdf = Pdf::loadView('passwork.pdf', ['passworks' => $passworks]);
+        //return $pdf->download('PassWork.pdf'); // download-auto
+        return $pdf->stream();
+        // return view('passwork.pdf', compact('passworks'));
     }
 
 
@@ -111,6 +124,9 @@ class PassworkController extends Controller
     public function edit($id)
     {
         $passwork = Passwork::find($id);
+
+        // Descifrar la contraseña antes de mostrarla
+        $passwork->password_pass = Crypt::decrypt($passwork->password_pass);
 
         $passgroups = Passgroup::pluck('name','id');
         

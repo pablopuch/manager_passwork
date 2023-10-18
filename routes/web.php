@@ -26,6 +26,7 @@ Auth::routes();
 
 Route::resource('passgroups', PassgroupController::class)->middleware('auth');
 Route::resource('passworks', PassworkController::class)->middleware('auth');
+Route::get('pdf', [PassworkController::class, 'pdf'])->name('passwork.pdf');
 
 
 Route::get('/home', [PassworkController::class, 'index'])->name('home');
@@ -33,6 +34,7 @@ Route::get('/home', [PassworkController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/', [PassworkController::class, 'index'])->name('home');
+
 
 });
 

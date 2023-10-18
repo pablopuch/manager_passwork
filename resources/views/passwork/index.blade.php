@@ -12,9 +12,7 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                            <span id="card_title">
-                                {{ __('Passwork') }}
-                            </span>
+                            <span id="card_title">{{ __('PassWork') }}</span>
 
                                 <div class="float-center">
                                     <form method="GET" role="form">
@@ -27,11 +25,20 @@
                                     </form>
                                 </div>
 
-                             <div class="float-right">
+                                <div class="float-right">
+                                    <a href="{{ route('passwork.pdf') }}" class="btn btn-primary btn-sm" data-placement="left">
+                                      {{ __('PDF') }}
+                                    </a>
+                                </div>
+
+                                &nbsp;
+
+                            <div class="float-right">
                                 <a href="{{ route('passworks.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
                                   {{ __('Crear nueva') }}
                                 </a>
-                              </div>
+                            </div>
+
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -77,7 +84,6 @@
 
                                 <h2>Personalice su contraseña</h2>
 
-
                                 <div class="form-group">
                                     <label for="length">Longitud de la contraseña</label>
                                     <br>
@@ -106,19 +112,22 @@
                                         <label class="form-check-label" for="use_symbols">Símbolos</label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" id="generated_password" name="generated_password" class="form-control" readonly>
+
+                                <div class="input-group">
+                                    <input type="text" id="generated_password" name="generated_password" class="form-control">
+                                    <button class="btn btn-outline-secondary" type="button"><i class="bi bi-copy"></i></button>
+                                    <button class="btn btn-outline-secondary" id="generate_password" type="button"><i class="bi bi-arrow-repeat"></i></button>
                                 </div>
-                                <button type="button" id="generate_password" class="btn btn-primary" style="margin-top: 10px">Generar Contraseña</button>
+
                             </form>
+
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-            <div class="d-flex justify-content-center" style="margin-top: 30px">{!! $passworks->links() !!}</div>
+    <div class="d-flex justify-content-center" style="margin-top: 30px">{!! $passworks->links() !!}</div>
 
-        </div>
-    </div>
 @endsection

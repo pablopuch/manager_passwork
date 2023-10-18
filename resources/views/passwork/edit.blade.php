@@ -13,7 +13,6 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Passwork</span>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('passworks.index') }}"> {{ __('Back') }}</a>
                         </div>

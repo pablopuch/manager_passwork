@@ -11,7 +11,6 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Passwork</span>
                         </div>
                         <div class="float-right">
                             <form action="{{ route('passworks.destroy',$passwork->id) }}" method="POST">

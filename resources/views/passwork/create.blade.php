@@ -14,7 +14,6 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Create') }} Passwork</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('passworks.index') }}"><i class="bi bi-arrow-left"></i> {{ __('Back') }}</a>
