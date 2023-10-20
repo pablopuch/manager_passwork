@@ -5,6 +5,8 @@ use App\Http\Controllers\PassworkController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PasswordGeneratorController;
+
 
 
 /*
@@ -26,7 +28,8 @@ Auth::routes();
 
 Route::resource('passgroups', PassgroupController::class)->middleware('auth');
 Route::resource('passworks', PassworkController::class)->middleware('auth');
-Route::get('pdf', [PassworkController::class, 'pdf'])->name('passwork.pdf');
+
+Route::post('generator', [PasswordGeneratorController::class, 'generatePassword'])->name('passwork.generate');
 
 
 Route::get('/home', [PassworkController::class, 'index'])->name('home');
@@ -34,8 +37,8 @@ Route::get('/home', [PassworkController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/', [PassworkController::class, 'index'])->name('home');
-
-
+    Route::get('pdf', [PassworkController::class, 'pdf'])->name('passwork.pdf');
+    
 });
 
 

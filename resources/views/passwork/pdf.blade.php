@@ -8,18 +8,20 @@
 </head>
 <body>
     
-    <table class="table">
-        <tbody>
-            @foreach ($passworks as $passwork)
-                <tr>
-                    <td>{{ $passwork->name }}</td>
-                    <td>{{ $passwork->user_pass}}</td>
-                    <td>{{ $passwork->email_pass }}</td>
-                    <td>{{ $passwork->password_pass }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                @foreach ($passworks as $passwork)
+                    <tr>
+                        <td>{{ $passwork->name }}</td>
+                        {{-- <td>{{ $passwork->user_pass}}</td> --}}
+                        <td>{{ $passwork->email_pass }}</td>
+                        <td>{{ $passwork->password_pass }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     
 </body>
 </html>

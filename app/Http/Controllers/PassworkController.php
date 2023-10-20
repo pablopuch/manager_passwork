@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-
-
 /**
  * Class PassworkController
  * @package App\Http\Controllers
@@ -44,13 +42,12 @@ class PassworkController extends Controller
 
     public function pdf()
     {
-        $passworks = Passwork::paginate();
+        $passworks = Passwork::all();
 
         $pdf = Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         $pdf = Pdf::loadView('passwork.pdf', ['passworks' => $passworks]);
-        //return $pdf->download('PassWork.pdf'); // download-auto
-        return $pdf->stream();
-        // return view('passwork.pdf', compact('passworks'));
+        return $pdf->download('PassWork.pdf'); // download-auto
+        //return $pdf->stream();
     }
 
 
@@ -91,8 +88,7 @@ class PassworkController extends Controller
 
         $passwork = Passwork::create($request->all());
 
-        return redirect()->route('passworks.index')
-            ->with('success', 'Passwork created successfully.');
+        return redirect()->route('passworks.index')->with('success', 'Passwork created successfully.');
     }
 
     /**
@@ -132,7 +128,6 @@ class PassworkController extends Controller
         
         $users = User::pluck('name','id');
 
-
         return view('passwork.edit', compact('passwork','passgroups','users'));
     }
 
@@ -170,4 +165,5 @@ class PassworkController extends Controller
         return redirect()->route('passworks.index')
             ->with('success', 'Passwork deleted successfully');
     }
+
 }
