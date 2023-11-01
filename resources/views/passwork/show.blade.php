@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
+    <section class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -20,13 +20,14 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> {{ __('Delete') }}</button>
                             </form> 
+                            <h2>{{ $passwork->name }}</h2>
                         </div>
                     </div>
 
+                    <div class="table-responsive">
                         <table class="table">
                                 <thead class="thead">
                                     <tr>                                        
-                                        <th><strong>Name</strong></th>
                                         <th><strong>User Pass</strong></th>
 										<th><strong>Email Pass</strong></th>
                                         <th><strong>Password Pass</strong></th>
@@ -35,14 +36,14 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-										<td>{{ $passwork->name }}</td>
                                         <td>{{ $passwork->user_pass }}</td>
 										<td>{{ $passwork->email_pass }}</td>
                                         <td>{{ $passwork->password_pass }}</td>
-                                        <td><a class="link-opacity-10" target="_blank" href="{{ $passwork->link }}">{{ $passwork->link }}</a></td>
+                                        <td><a class="link-opacity-10" target="_blank" href="{{ $passwork->link }}">Ver link</a></td>
                                     </tr>
                                 </tbody>
                         </table>
+                    </div>
                 </div>
             </div>
         </div>

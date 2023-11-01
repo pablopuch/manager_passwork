@@ -10,8 +10,8 @@ class PasswordGeneratorController extends Controller
 {
     public function generatePassword(Request $request)
     {
-
-        $passworks = Passwork::paginate(10);
+        $passworks = Passwork::orderBy('created_at', 'desc') // Ordena de forma descendente por fecha de creación
+            ->paginate(10);
 
         $length = $request->input('length', 12);
         $useUppercase = $request->input('useUppercase', false);

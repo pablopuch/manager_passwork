@@ -10,11 +10,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-
-                            <span id="card_title">{{ __('PassWork') }}</span>
-
-                                <div class="float-center">
+                        <div style="display: flex; justify-content: space-between;">
+                                <div class="">
                                     <form method="GET" role="form">
                                         <div class="input-group">
                                             {{-- <input type="text" class="form-control" name="search" value="{{ request()->get('search') }}" placeholder="Buscar..." style="margin-right: 10px"/>
@@ -33,7 +30,7 @@
 
                                 <div class="float-right">
                                     <a href="{{ route('passwork.pdf') }}" class="btn btn-outline-secondary float-right" data-placement="left">
-                                        <i class="bi bi-file-earmark-arrow-down">Descarga PDF</i>
+                                        <i class="bi bi-file-earmark-arrow-down"> Descarga PDF</i>
                                     </a>
                                 </div>
 
@@ -56,7 +53,6 @@
                                 <tbody>
                                     @foreach ($passworks as $passwork)
                                         <tr>
-                                            {{-- <td>{{ $passwork->url_img }}</td> --}}
 											<td>{{ $passwork->name }}</td>
 											<td>{{ $passwork->email_pass }}</td>
                                             <td>
@@ -119,7 +115,7 @@
                                         <input type="text" class="form-control" aria-label="Recipient's username" value="{{ $password }}" aria-describedby="basic-addon2">
                                     @endif
                                     <button class="btn btn-outline-secondary" type="button" id="copy_password"><i class="bi bi-copy"></i></button>
-                                    <button class="btn btn-outline-secondary" id="generate_password" type="submit"><i class="bi bi-arrow-repeat"></i></button>
+                                    <button class="btn btn-outline-secondary" type="submit" id="generate_password"><i class="bi bi-arrow-repeat"></i></button>
                                 </div>
                             </form>
                         </div>

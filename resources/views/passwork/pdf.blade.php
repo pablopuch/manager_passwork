@@ -14,7 +14,7 @@
                 @foreach ($passworks as $passwork)
                     <tr>
                         <td>{{ $passwork->name }}</td>
-                        {{-- <td>{{ $passwork->user_pass}}</td> --}}
+                        <td>{{ $passwork->user_pass}}</td>
                         <td>{{ $passwork->email_pass }}</td>
                         <td>{{ $passwork->password_pass }}</td>
                     </tr>

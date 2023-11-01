@@ -81,9 +81,23 @@ class PassworkController extends Controller
     {
         request()->validate(Passwork::$rules);
 
-        // Encriptar la contraseña antes de guardarla
+        // Obtén la contraseña sin encriptar
+        $userPassword = $request->input('password_pass');
+
+        // Define la longitud máxima deseada para la contraseña encriptada (por ejemplo, 250 caracteres)
+        $maxCharacterLimit = 250;
+
+        // Encripta la contraseña
+        $encryptedPassword = Crypt::encrypt($userPassword);
+
+        // Trunca la contraseña encriptada si es más larga de lo permitido
+        if (strlen($encryptedPassword) > $maxCharacterLimit) {
+            $encryptedPassword = substr($encryptedPassword, 0, $maxCharacterLimit);
+        }
+
+        // Asigna la contraseña encriptada limitada a la solicitud
         $request->merge([
-            'password_pass' => Crypt::encrypt($request->input('password_pass')),
+            'password_pass' => $encryptedPassword,
         ]);
 
         $passwork = Passwork::create($request->all());
@@ -142,9 +156,23 @@ class PassworkController extends Controller
     {
         request()->validate(Passwork::$rules);
 
-        // Encriptar la contraseña antes de actualizarla
+        // Obtén la contraseña sin encriptar
+        $userPassword = $request->input('password_pass');
+
+        // Define la longitud máxima deseada para la contraseña encriptada (por ejemplo, 250 caracteres)
+        $maxCharacterLimit = 250;
+
+        // Encripta la contraseña
+        $encryptedPassword = Crypt::encrypt($userPassword);
+
+        // Trunca la contraseña encriptada si es más larga de lo permitido
+        if (strlen($encryptedPassword) > $maxCharacterLimit) {
+            $encryptedPassword = substr($encryptedPassword, 0, $maxCharacterLimit);
+        }
+
+        // Asigna la contraseña encriptada limitada a la solicitud
         $request->merge([
-            'password_pass' => Crypt::encrypt($request->input('password_pass')),
+            'password_pass' => $encryptedPassword,
         ]);
 
         $passwork->update($request->all());
