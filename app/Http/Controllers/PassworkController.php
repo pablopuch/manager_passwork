@@ -177,8 +177,7 @@ class PassworkController extends Controller
 
         $passwork->update($request->all());
 
-        return redirect()->route('passworks.index')
-            ->with('success', 'Passwork updated successfully');
+        return redirect()->route('passworks.index')->with('success', 'Passwork updated successfully');
     }
 
     /**
