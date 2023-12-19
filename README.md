@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="catches\logo.png" width="400" alt="Password Logo"></a></p>
 
 ## Installation process
 
@@ -38,6 +38,17 @@ Symbolic link in your application's
 Start the local development server
 
     php artisan serve
+
+
+## Screenshots
+
+<img src="catches\home.png" width="400" alt="password">
+<img src="catches\Screenshot_1.png" width="400" alt="password">
+<img src="catches\Screenshot_2.png" width="400" alt="password">
+<img src="catches\Screenshot_3.png" width="400" alt="password">
+<img src="catches\Screenshot_4.png" width="400" alt="password">
+<img src="catches\Screenshot_5.png" width="400" alt="password">
+
 
 
 ## Resources

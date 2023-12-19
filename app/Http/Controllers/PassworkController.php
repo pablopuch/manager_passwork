@@ -23,14 +23,19 @@ class PassworkController extends Controller
      */
     public function index(Request $request)
     {
+
+        $user = Auth::user();
+
         if ($request->filled('search')) {
             $searchTerm = $request->input('search');
 
-            $passworks = Passwork::where('name', 'LIKE', $searchTerm . '%')
+            $passworks = Passwork::where('user_id', $user->id)
+            ->where('name', 'LIKE', $searchTerm . '%')
             ->orderBy('created_at', 'desc')
             ->paginate(10); // Cambia el número según tus necesidades
         } else {
-            $passworks = Passwork::orderBy('created_at', 'desc') // Ordena de forma descendente por fecha de creación
+            $passworks = Passwork::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc') // Ordena de forma descendente por fecha de creación
             ->paginate(10);
         }
 
@@ -39,6 +44,8 @@ class PassworkController extends Controller
 
         return view('passwork.index', compact('passworks', 'passgroups', 'users'));
     }
+
+
 
     public function pdf()
     {
