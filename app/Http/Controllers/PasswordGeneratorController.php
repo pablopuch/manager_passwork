@@ -24,7 +24,7 @@ class PasswordGeneratorController extends Controller
         if ($useUppercase) {
             $characters .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         }
-        if ($useLowercase) { // Agregamos minúsculas
+        if ($useLowercase) { 
             $characters .= 'abcdefghijklmnopqrstuvwxyz';
         }
         if ($useNumbers) {
