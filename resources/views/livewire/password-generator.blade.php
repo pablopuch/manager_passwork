@@ -9,40 +9,38 @@
                         <div class="form-group">
                             <label for="length" class="mb-0">Longitud de la contraseña</label>
                             <div class="input-group">
-                                <input value="12" name="length" class="lp-custom-range__number" step="1" id="length" type="number" min="1" max="50">
-                                <input type="range" class="lp-custom-form-range" id="passwordLength" name="passwordLength" min="1" max="50" step="1" value="12">
+                                <input wire:model="length" name="length" class="lp-custom-range__number" step="1" id="length" type="number" min="1" max="50">
+                                <input wire:model="length" type="range" class="lp-custom-form-range" id="passwordLength" name="passwordLength" min="1" max="50" step="1">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="form-check">
-                                <input type="checkbox" id="useUppercase" name="useUppercase" class="form-check-input" checked>
+                                <input wire:model="useUppercase" type="checkbox" id="useUppercase" name="useUppercase" class="form-check-input" checked>
                                 <label class="form-check-label">Mayúsculas</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" id="useLowercase" name="useLowercase" class="form-check-input" checked>
+                                <input wire:model="useLowercase" type="checkbox" id="useLowercase" name="useLowercase" class="form-check-input" checked>
                                 <label class="form-check-label">Minúsculas</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" id="useNumbers" name="useNumbers" class="form-check-input" checked>
+                                <input wire:model="useNumbers" type="checkbox" id="useNumbers" name="useNumbers" class="form-check-input" checked>
                                 <label class="form-check-label">Números</label>
                             </div>
 
                             <div class="form-check">
-                                <input type="checkbox" id="useSymbols" name="useSymbols" class="form-check-input" checked>
+                                <input wire:model="useSymbols" type="checkbox" id="useSymbols" name="useSymbols" class="form-check-input" checked>
                                 <label class="form-check-label">Símbolos</label>
                             </div>
                         </div>
 
                         <div class="input-group">
-                            <input wire:model="password" id="password" type="text" value="{{ $password }}" class="form-control">
+                            <input wire:model="password" id="password" type="text" class="form-control">
                             <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyPasswordToClipboard()"><i class="bi bi-copy"></i></button>
                             <button wire:click="generatePassword" class="btn btn-outline-secondary"><i class="bi bi-arrow-repeat"></i></button>
                         </div>
-                        <p>{{ $password }}</p>
-
                     </form>
                 </div>
             </div>

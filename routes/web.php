@@ -30,8 +30,6 @@ Route::resource('passworks', PassworkController::class)->middleware('auth');
 
 Route::post('generator', [PasswordGeneratorController::class, 'generatePassword'])->name('passwork.generate');
 
-
-
 Route::get('/home', [PassworkController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
