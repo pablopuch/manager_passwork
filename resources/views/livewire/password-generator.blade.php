@@ -9,8 +9,8 @@
                         <div class="form-group">
                             <label for="length" class="mb-0">Longitud de la contraseña</label>
                             <div class="input-group">
-                                <input wire:model="length" name="length" class="lp-custom-range__number" step="1" id="length" type="number" min="1" max="50">
-                                <input wire:model="length" type="range" class="lp-custom-form-range" id="passwordLength" name="passwordLength" min="1" max="50" step="1">
+                                <input wire:model="length" name="length" class="lp-custom-range__number" step="1" id="length" type="number" min="6" max="30">
+                                <input wire:model="length" type="range" class="lp-custom-form-range" id="passwordLength" name="passwordLength" min="6" max="30" step="1">
                             </div>
                         </div>
 

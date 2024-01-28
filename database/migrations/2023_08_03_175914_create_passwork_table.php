@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name')->default("Nueva contraseña");
             $table->string('user_pass');
             $table->string('email_pass')->nullable();
-            $table->string('password_pass');
+            $table->text('password_pass');
             $table->string('link')->nullable();
             $table->string('note')->nullable();
             $table->string('url_img')->nullable();
