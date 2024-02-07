@@ -2,11 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassworkController;
-use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PasswordGeneratorController;
-
+use App\Http\Controllers\SocialiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,23 +37,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::get('/google-auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
-
-Route::get('/google-auth/callback', function () {
-    $user_google = Socialite::driver('google')->user();
-
-    $user = User::updateOrCreate([
-        'google_id' => $user_google->id,
-    ], [
-        'name' => $user_google->name,
-        'email' => $user_google->email,
-        'google_token' => $user_google->token,
-        'google_refresh_token' => $user_google->refreshToken,
-    ]);
-
-    Auth::login($user);
-
-    return redirect('/home');
-});
+Route::get('/auth/{provider}/redirect', [SocialiteController::class, 'redirect']);
+Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback']);
