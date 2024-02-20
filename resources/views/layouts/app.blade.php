@@ -13,6 +13,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-fv0BGRMzAovq6jGYizEElft6Tvxr2t6zJhFzFqADaPd+6KrEEqOOl5LI9dNlJS9L" crossorigin="anonymous">
+
 
     <!-- Scripts -->
     @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/sass/app.scss'])

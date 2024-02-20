@@ -36,12 +36,26 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="text" class="form-control" value="{{  $passwork->user_pass }}"></td>
-                                <td><input type="text" class="form-control" id="{{ $passwork->email_pass }}" value="{{ $passwork->email_pass }}">
-                                    <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('{{ $passwork->email_pass }}')"><i class="bi bi-copy"></i></button>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" value="{{  $passwork->user_pass }}">
+                                        <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyToClipboard('{{ $passwork->user_pass }}')">
+                                            <i class="bi bi-copy"></i></button>
+                                    </div>
                                 </td>
-                                <td><input type="text" class="form-control" id="{{ $passwork->password_pass }}" value="{{ $passwork->password_pass }}">
-                                    <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('{{ $passwork->password_pass }}')"><i class="bi bi-copy"></i></button>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="{{ $passwork->email_pass }}" value="{{ $passwork->email_pass }}">
+                                        <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyToClipboard('{{ $passwork->email_pass }}')">
+                                            <i class="bi bi-copy"></i></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="{{ $passwork->password_pass }}" value="{{ $passwork->password_pass }}">
+                                        <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyToClipboard('{{ $passwork->password_pass }}')">
+                                            <i class="bi bi-copy"></i></button>
+                                    </div>
                                 </td>
                                 <td><a class="link-opacity-10" target="_blank" href="{{ $passwork->link }}">Ver link</a></td>
                             </tr>

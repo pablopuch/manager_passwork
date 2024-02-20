@@ -29,14 +29,9 @@ Passwork
                         </div>
 
                         <div class="float-right">
-                            <a href="{{ route('passwork.pdf') }}" class="btn btn-outline-secondary float-right" data-placement="left">
-                                <i class="bi bi-file-earmark-arrow-down"> Descarga PDF</i>
-                            </a>
-                        </div>
-
-                        <div class="float-right">
-                            <a href="{{ route('passworks.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
+                            <a href="{{ route('passworks.create') }}" class="btn btn-primary btn-lg float-right" data-placement="left">
                                 {{ __('Crear nueva') }}
+                                <i class="fas fa-plus"></i>
                             </a>
                         </div>
 
@@ -53,11 +48,13 @@ Passwork
                         <tbody>
                             @foreach ($passworks as $passwork)
                             <tr>
-                                <td>{{ $passwork->name }}</td>
-                                <td>{{ $passwork->email_pass }}</td>
+                                <td class="text-left">{{ $passwork->name }}</td>
+                                <td class="text-center">{{ $passwork->email_pass }}</td>
                                 <td>
-                                    <form action="{{ route('passworks.destroy',$passwork->id) }}" method="POST">
-                                        <a class="btn btn-primary" href="{{ route('passworks.show',$passwork->id) }}">{{ __('Ver') }}</a>
+                                    <form class="text-end" action="{{ route('passworks.destroy',$passwork->id) }}" method="POST">
+                                        <a class="btn btn-primary btn-lg rounded-pill botton-see" href="{{ route('passworks.show',$passwork->id) }}">{{ __('Ver') }}
+                                            <i class="far fa-eye"></i>
+                                        </a>
                                     </form>
                                 </td>
                             </tr>

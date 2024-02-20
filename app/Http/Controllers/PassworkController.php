@@ -48,18 +48,6 @@ class PassworkController extends Controller
     }
 
 
-
-    public function pdf()
-    {
-        $passworks = Passwork::all();
-
-        $pdf = Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-        $pdf = Pdf::loadView('passwork.pdf', ['passworks' => $passworks]);
-        return $pdf->download('PassWork.pdf'); // download-auto
-        //return $pdf->stream();
-    }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -152,8 +140,6 @@ class PassworkController extends Controller
             return redirect()->route('passworks.index')->with('error', 'Error al descifrar la contraseña. Contacta al soporte para obtener ayuda.');
         }
     }
-
-
 
 
     /**

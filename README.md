@@ -1,15 +1,22 @@
 <p align="center"><a href="#" target="_blank"><img src="catches\logo.png" width="400" alt="Password Logo"></a></p>
 
+# PassWord
+
+It is a project that allows you to have your passwords saved and organised in a very simple way. This project is a first version (1.0)
+
 ## Installation process
 
 Clone the repository
 
     git clone https://github.com/pablopuch/manager_passwork.git
 
-
 Install all the dependencies using composer
 
     composer install
+
+Install all the dependencies using composer
+
+    npm install
 
 Copy the example env file and make the required configuration changes in the .env file
 
