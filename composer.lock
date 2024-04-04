@@ -3009,6 +3009,7 @@
         },
         {
             "name": "phenx/php-svg-lib",
+<<<<<<< HEAD
             "version": "0.5.3",
             "source": {
                 "type": "git",
@@ -3019,6 +3020,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/dompdf/php-svg-lib/zipball/0e46722c154726a5f9ac218197ccc28adba16fcf",
                 "reference": "0e46722c154726a5f9ac218197ccc28adba16fcf",
+=======
+            "version": "0.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dompdf/php-svg-lib.git",
+                "reference": "732faa9fb4309221e2bd9b2fda5de44f947133aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dompdf/php-svg-lib/zipball/732faa9fb4309221e2bd9b2fda5de44f947133aa",
+                "reference": "732faa9fb4309221e2bd9b2fda5de44f947133aa",
+>>>>>>> 3303e291ee080b09388d904e54214d9d050909e5
                 "shasum": ""
             },
             "require": {
@@ -3049,9 +3062,15 @@
             "homepage": "https://github.com/PhenX/php-svg-lib",
             "support": {
                 "issues": "https://github.com/dompdf/php-svg-lib/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/dompdf/php-svg-lib/tree/0.5.3"
             },
             "time": "2024-02-23T20:39:24+00:00"
+=======
+                "source": "https://github.com/dompdf/php-svg-lib/tree/0.5.2"
+            },
+            "time": "2024-02-07T12:49:40+00:00"
+>>>>>>> 3303e291ee080b09388d904e54214d9d050909e5
         },
         {
             "name": "phpoption/phpoption",
@@ -8922,5 +8941,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
