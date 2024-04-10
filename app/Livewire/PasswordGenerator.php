@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
-use Illuminate\Http\Request;
 use Livewire\Component;
+
 
 class PasswordGenerator extends Component
 {

@@ -1,3 +1,5 @@
+
+
 <div class="box box-info padding-1">
     <div class="box-body">
         
@@ -10,8 +12,6 @@
         <div class="form-group" style="display: none;">
             {{ Form::text('user_id', Auth::user()->id) }}
         </div>
-
-
 
         <div class="form-group">
             {{ Form::label('name') }}
@@ -33,8 +33,6 @@
             {{ Form::text('password_pass', $passwork->password_pass, ['class' => 'form-control' . ($errors->has('password_pass') ? ' is-invalid' : ''), 'placeholder' => 'Password Pass']) }}
             {!! $errors->first('password_pass', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
-
 
         <div class="form-group">
             {{ Form::label('link') }}

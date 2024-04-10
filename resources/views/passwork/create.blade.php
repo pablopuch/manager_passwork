@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@livewireScripts
+
 
 @section('template_title')
 {{ __('Create') }} Passwork

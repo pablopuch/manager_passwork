@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\Encryption\DecryptException;
 
 
+
 /**
  * Class PassworkController
  * @package App\Http\Controllers
