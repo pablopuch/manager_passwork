@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@livewireScripts
 
 
 @section('template_title')
