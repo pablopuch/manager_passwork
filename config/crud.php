@@ -34,11 +34,11 @@ return [
     |--------------------------------------------------------------------------
     |
     | This value is the name of your application layout. This value is used when creating
-    | views for crud. Default will be the "layouts.app".
+    | views for crud. Default will be the "components.components.layouts.app".
     |
     */
 
-    'layout' => 'layouts.app',
+    'layout' => 'components.components.layouts.app',
 
     'model' => [
         'namespace' => 'App\Models',

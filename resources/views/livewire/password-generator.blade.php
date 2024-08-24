@@ -3,41 +3,41 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form wire:submit.prevent="generatePassword">
+                    <form wire:submit="generatePassword">
                         @csrf
                         <h2>Personalice su contraseña</h2>
                         <div class="form-group">
                             <label for="length" class="mb-0">Longitud de la contraseña</label>
                             <div class="input-group">
-                                <input wire:model="length" name="length" class="lp-custom-range__number" step="1" id="length" type="number" min="6" max="30">
-                                <input wire:model="length" type="range" class="lp-custom-form-range" id="passwordLength" name="passwordLength" min="6" max="30" step="1">
+                                <input wire:model.live="length" name="length" class="lp-custom-range__number" step="1" id="length" type="number" min="6" max="30">
+                                <input wire:model.live="length" type="range" class="lp-custom-form-range" id="passwordLength" name="passwordLength" min="6" max="30" step="1">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="form-check">
-                                <input wire:model="useUppercase" type="checkbox" id="useUppercase" name="useUppercase" class="form-check-input" checked>
+                                <input wire:model.live="useUppercase" type="checkbox" id="useUppercase" name="useUppercase" class="form-check-input" checked>
                                 <label class="form-check-label">Mayúsculas</label>
                             </div>
 
                             <div class="form-check">
-                                <input wire:model="useLowercase" type="checkbox" id="useLowercase" name="useLowercase" class="form-check-input" checked>
+                                <input wire:model.live="useLowercase" type="checkbox" id="useLowercase" name="useLowercase" class="form-check-input" checked>
                                 <label class="form-check-label">Minúsculas</label>
                             </div>
 
                             <div class="form-check">
-                                <input wire:model="useNumbers" type="checkbox" id="useNumbers" name="useNumbers" class="form-check-input" checked>
+                                <input wire:model.live="useNumbers" type="checkbox" id="useNumbers" name="useNumbers" class="form-check-input" checked>
                                 <label class="form-check-label">Números</label>
                             </div>
 
                             <div class="form-check">
-                                <input wire:model="useSymbols" type="checkbox" id="useSymbols" name="useSymbols" class="form-check-input" checked>
+                                <input wire:model.live="useSymbols" type="checkbox" id="useSymbols" name="useSymbols" class="form-check-input" checked>
                                 <label class="form-check-label">Símbolos</label>
                             </div>
                         </div>
 
                         <div class="input-group">
-                            <input wire:model="password" id="password" type="text" class="form-control">
+                            <input wire:model.live="password" id="password" type="text" class="form-control">
                             <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyPasswordToClipboard()"><i class="bi bi-copy"></i></button>
                             <button wire:click="generatePassword" class="btn btn-outline-secondary"><i class="bi bi-arrow-repeat"></i></button>
                         </div>
