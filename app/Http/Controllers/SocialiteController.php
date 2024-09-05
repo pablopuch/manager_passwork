@@ -12,12 +12,12 @@ class SocialiteController extends Controller
 
     public function redirect($provider)
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->stateless()->redirect();
     }
 
     public function callback($provider)
     {
-        $SocialUser = Socialite::driver($provider)->user();
+        $SocialUser = Socialite::driver($provider)->stateless()->user();
 
         $user = User::updateOrCreate([
             'provider_id' => $SocialUser->id,
