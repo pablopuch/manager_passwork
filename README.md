@@ -2,7 +2,7 @@
 
 # PassWord
 
-It is a project that allows you to have your passwords saved and organised in a very simple way. This project is a first version (1.0)
+It is a project that allows you to have your passwords saved and organised in a very simple way. This project is a first version (2.0)
 
 ## Installation process
 
@@ -49,13 +49,9 @@ Start the local development server
 
 ## Screenshots
 
-<img src="catches\home.png" width="400" alt="password">
-<img src="catches\Screenshot_1.png" width="400" alt="password">
-<img src="catches\Screenshot_2.png" width="400" alt="password">
-<img src="catches\Screenshot_3.png" width="400" alt="password">
-<img src="catches\Screenshot_4.png" width="400" alt="password">
-<img src="catches\Screenshot_5.png" width="400" alt="password">
+![Descripción del GIF](catches/passwork.gif)
 
+![Descripción del GIF](catches/generate-pass.gif)
 
 
 ## Resources
