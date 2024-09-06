@@ -5,15 +5,17 @@
 @endsection
 
 @section('content')
-<section class="content">
+<section class="content my-4">
     <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-10">
+        <div class="col-lg-10 col-md-10 col-sm-12">
             @includeif('partials.errors')
 
             <div class="card card-default">
                 <div class="card-header">
-                    <div class="float-right">
-                        <a class="btn btn-primary" href="{{ route('passworks.index') }}"> {{ __('Back') }}</a>
+                    <div class="float-right text-end">
+                        <a class="btn btn-primary" href="{{ route('passworks.index') }}">
+                            <i class="bi bi-arrow-left"></i> {{ __('Back') }}
+                        </a>
                     </div>
                 </div>
                 <div class="card shadow-sm">

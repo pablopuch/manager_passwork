@@ -11,14 +11,24 @@
         <div class="col-md-10 col-lg-10">
             @includeif('partials.errors')
 
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <form method="POST" action="{{ route('passworks.store') }}" role="form" enctype="multipart/form-data">
-                        @csrf
+            <div class="card card-default">
+                <div class="card-header">
+                    <div class="float-right text-end">
+                        <a class="btn btn-primary" href="{{ route('passworks.index') }}">
+                            <i class="bi bi-arrow-left"></i> {{ __('Back') }}
+                        </a>
+                    </div>
+                </div>
 
-                        @include('passwork.form')
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('passworks.store') }}" role="form" enctype="multipart/form-data">
+                            @csrf
 
-                    </form>
+                            @include('passwork.form')
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

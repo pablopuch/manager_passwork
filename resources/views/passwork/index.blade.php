@@ -30,12 +30,12 @@ Passwork
     @endif
 
     <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover align-middle">
             <thead>
                 <tr>
                     <th>{{ __('Nombre') }}</th>
                     <th>{{ __('Email') }}</th>
-                    <th>{{ __('Acciones') }}</th>
+                    <th class="text-center">{{ __('Acciones') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,11 +43,23 @@ Passwork
                 <tr>
                     <td>{{ $passwork->name }}</td>
                     <td>{{ $passwork->email_pass }}</td>
-                    <td class="text-end">
-                        <a class="btn btn-primary btn-sm rounded-pill" href="{{ route('passworks.show',$passwork->id) }}">
+                    <td class="text-center d-flex justify-content-evenly">
+                        <a class="btn btn-primary btn-md rounded-pill " href="{{ route('passworks.show',$passwork->id) }}">
                             {{ __('Ver') }}
                             <i class="far fa-eye"></i>
                         </a>
+                        <a class="btn btn-warning btn-md rounded-pill" href="{{ route('passworks.edit',$passwork->id) }}">
+                            {{ __('Editar') }}
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <form action="{{ route('passworks.destroy', $passwork->id) }}" method="POST" style="display:inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-md rounded-pill">
+                                {{ __('Borrar') }}
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -64,3 +76,5 @@ Passwork
 <livewire:password-generator />
 @livewireScripts
 @endsection
+
+

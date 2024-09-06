@@ -5,59 +5,58 @@
 @endsection
 
 @section('content')
-<section class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="float-left">
-                    </div>
-                    <div class="float-right">
-                        <form action="{{ route('passworks.destroy',$passwork->id) }}" method="POST">
-                            <a class="btn btn-primary" href="{{ route('passworks.index') }}"><i class="bi bi-arrow-left"></i> {{ __('Back') }}</a>
-                            <a class="btn btn-success" href="{{ route('passworks.edit',$passwork->id) }}"><i class="bi bi-pencil-square"></i> {{ __('Edit') }}</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> {{ __('Delete') }}</button>
-                        </form>
-                        <h2>{{ $passwork->name }}</h2>
+<section class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+            <div class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h2>{{ $passwork->name }}</h2>
+                    <div class="btn-group">
+                        <a class="btn btn-primary" href="{{ route('passworks.index') }}">
+                            <i class="bi bi-arrow-left"></i> {{ __('Back') }}
+                        </a>
                     </div>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table">
-                        <thead class="thead">
+                    <table class="table align-middle">
+                        <thead>
                             <tr>
-                                <th><strong>User Pass</strong></th>
-                                <th><strong>Email Pass</strong></th>
-                                <th><strong>Password Pass</strong></th>
-                                <th><strong>URL</strong></th>
+                                <th><strong>{{ __('User Pass') }}</strong></th>
+                                <th><strong>{{ __('Email Pass') }}</strong></th>
+                                <th><strong>{{ __('Password Pass') }}</strong></th>
+                                <th><strong>{{ __('URL') }}</strong></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" value="{{  $passwork->user_pass }}">
-                                        <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyToClipboard('{{ $passwork->user_pass }}')">
-                                            <i class="bi bi-copy"></i></button>
+                                        <input type="text" class="form-control" id="user_pass" value="{{ $passwork->user_pass }}" readonly>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('user_pass')">
+                                            <i class="bi bi-copy"></i>
+                                        </button>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="{{ $passwork->email_pass }}" value="{{ $passwork->email_pass }}">
-                                        <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyToClipboard('{{ $passwork->email_pass }}')">
-                                            <i class="bi bi-copy"></i></button>
+                                        <input type="text" class="form-control" id="email_pass" value="{{ $passwork->email_pass }}" readonly>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('email_pass')">
+                                            <i class="bi bi-copy"></i>
+                                        </button>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="{{ $passwork->password_pass }}" value="{{ $passwork->password_pass }}">
-                                        <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyToClipboard('{{ $passwork->password_pass }}')">
-                                            <i class="bi bi-copy"></i></button>
+                                        <input type="text" class="form-control" id="password_pass" value="{{ $passwork->password_pass }}" readonly>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('password_pass')">
+                                            <i class="bi bi-copy"></i>
+                                        </button>
                                     </div>
                                 </td>
-                                <td><a class="link-opacity-10" target="_blank" href="{{ $passwork->link }}">Ver link</a></td>
+                                <td>
+                                    <a class="btn btn-link" target="_blank" href="{{ $passwork->link }}">{{ __('View Link') }}</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -71,7 +70,8 @@
 <script>
     function copyToClipboard(elementId) {
         var inputElement = document.getElementById(elementId);
-        inputElement.select();
-        document.execCommand('copy');
+        navigator.clipboard.writeText(inputElement.value)
+            .then(() => alert('{{ __("Copied to clipboard!") }}'))
+            .catch(err => console.error('Error copying text: ', err));
     }
 </script>
