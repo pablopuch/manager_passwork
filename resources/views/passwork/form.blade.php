@@ -1,7 +1,7 @@
 <div class="box box-info padding-1">
     <div class="box-body">
 
-        <!-- <div class="form-group" style="display: none;">
+        <div class="form-group" style="display: none;">
             {{ Form::label('passgroup_id') }}
             {{ Form::select('passgroup_id', $passgroups, $passwork->passgroup_id, ['class' => 'form-control' . ($errors->has('passgroup_id') ? ' is-invalid' : ''), 'placeholder' => 'Passgroup Id']) }}
             {!! $errors->first('passgroup_id', '<div class="invalid-feedback">:message</div>') !!}
@@ -9,7 +9,7 @@
 
         <div class="form-group" style="display: none;">
             {{ Form::text('user_id', Auth::user()->id) }}
-        </div> -->
+        </div>
 
         <div class="row g-3">
             <!-- Columna izquierda -->
