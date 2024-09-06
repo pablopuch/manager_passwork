@@ -26,6 +26,18 @@ Generate a random key
 
     php artisan key:generate
 
+Copy de Key_id and Client secrets with Google and GitHub. Config in dile .env
+
+```php
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+GITHUB_REDIRECT=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REDIRECT=
+```
+
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
