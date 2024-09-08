@@ -12,11 +12,16 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h2>{{ $passwork->name }}</h2>
                     <div class="btn-group">
-                        <a class="btn btn-primary" href="{{ route('passworks.index') }}">
-                            <i class="bi bi-arrow-left"></i> {{ __('Back') }}
+                        <a class="btn btn-primary me-2" href="{{ route('passworks.index') }}">
+                            <i class="bi bi-arrow-left"></i> {{ __('Volver') }}
+                        </a>
+                        <a class="btn btn-warning btn-md" href="{{ route('passworks.edit',$passwork->id) }}">
+                            {{ __('Editar') }}
+                            <i class="bi bi-pencil"></i>
                         </a>
                     </div>
                 </div>
+
 
                 <div class="table-responsive">
                     <table class="table align-middle">

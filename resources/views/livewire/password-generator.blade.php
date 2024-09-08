@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mb-5 mt-4">
     <div class="row justify-content-center">
         <div class="col-md-10 col-lg-10">
             <div class="card shadow-sm">
@@ -9,7 +9,6 @@
                     <form wire:submit="generatePassword">
                         @csrf
                         <div class="mb-4">
-                            <label for="length" class="form-label">Longitud de la Contraseña</label>
                             <div class="d-flex align-items-center">
                                 <input wire:model.live="length" name="length" type="number" id="length" class="form-control me-2" step="1" min="6" max="30" style="width: 80px;">
                                 <input wire:model.live="length" type="range" class="form-range flex-grow-1" id="passwordLength" name="passwordLength" min="6" max="30" step="1">
