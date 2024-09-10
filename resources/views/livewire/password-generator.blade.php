@@ -46,7 +46,7 @@
 
                         <div class="input-group">
                             <input wire:model.live="password" id="password" type="text" class="form-control" readonly>
-                            <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copyPasswordToClipboard()">
+                            <button class="btn btn-outline-secondary" type="button" id="copy_password" onclick="copy_clipboard()">
                                 <i class="bi bi-clipboard"></i> Copiar
                             </button>
                             <button wire:click="generatePassword" class="btn btn-outline-primary">
@@ -61,15 +61,21 @@
 </div>
 
 <script>
-    function copyPasswordToClipboard() {
-        // Selecciona el campo de contraseña
-        var passwordField = document.getElementById('password');
+    function copy_clipboard() {
+        var campoContraseña = document.getElementById('password');
 
-        // Selecciona el contenido del campo de contraseña
-        passwordField.select();
-        passwordField.setSelectionRange(0, 99999); // Para dispositivos móviles
-
-        // Copia el contenido al portapapeles
-        document.execCommand('copy');
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            // Utiliza la API moderna si está disponible
+            navigator.clipboard.writeText(campoContraseña.value).then(function() {
+                alert('Contraseña copiada al portapapeles');
+            }).catch(function(err) {
+                console.error('Error al copiar la contraseña: ', err);
+            });
+        } else {
+            // Método de respaldo para navegadores antiguos
+            campoContraseña.select();
+            campoContraseña.setSelectionRange(0, 99999); // Para dispositivos móviles
+            document.execCommand('copy');
+        }
     }
 </script>

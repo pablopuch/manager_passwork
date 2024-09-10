@@ -15,13 +15,13 @@
             <!-- Columna izquierda -->
             <div class="col-md-6">
                 <div class="form-group mb-3">
-                    {{ Form::label('name', 'Name', ['class' => 'form-label']) }}
+                    {{ Form::label('name', 'Nombre', ['class' => 'form-label']) }}
                     {{ Form::text('name', $passwork->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
                     {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 
                 <div class="form-group mb-3">
-                    {{ Form::label('user_pass', 'User Pass', ['class' => 'form-label']) }}
+                    {{ Form::label('user_pass', 'Usuario', ['class' => 'form-label']) }}
                     {{ Form::text('user_pass', $passwork->user_pass, ['class' => 'form-control' . ($errors->has('user_pass') ? ' is-invalid' : ''), 'placeholder' => 'User Pass']) }}
                     {!! $errors->first('user_pass', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -30,13 +30,13 @@
             <!-- Columna derecha -->
             <div class="col-md-6">
                 <div class="form-group mb-3">
-                    {{ Form::label('email_pass', 'Email Pass', ['class' => 'form-label']) }}
+                    {{ Form::label('email_pass', 'Correo', ['class' => 'form-label']) }}
                     {{ Form::text('email_pass', $passwork->email_pass, ['class' => 'form-control' . ($errors->has('email_pass') ? ' is-invalid' : ''), 'placeholder' => 'Email Pass']) }}
                     {!! $errors->first('email_pass', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 
                 <div class="form-group mb-3">
-                    {{ Form::label('password_pass', 'Password Pass', ['class' => 'form-label']) }}
+                    {{ Form::label('password_pass', 'Contraseña', ['class' => 'form-label']) }}
                     {{ Form::text('password_pass', $passwork->password_pass, ['class' => 'form-control' . ($errors->has('password_pass') ? ' is-invalid' : ''), 'placeholder' => 'Password Pass']) }}
                     {!! $errors->first('password_pass', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
@@ -73,7 +73,7 @@
 
     <div class="box-footer mt-4 text-center">
         <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 10px; padding: 10px 50px;">
-            {{ __('Submit') }}
+            {{ __('Crear') }}
         </button>
     </div>
 
