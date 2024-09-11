@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(3)->create()->each(function (User $user) {
 
-            $user->passgroups()->saveMany(Passgroup::factory(2)->make());
+            $user->passgroups()->saveMany(Passgroup::factory(20)->make());
 
             Passwork::factory(3)->create(['user_id' => $user->id, 'passgroup_id' => $user->id]);
 

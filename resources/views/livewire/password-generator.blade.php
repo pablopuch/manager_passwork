@@ -66,9 +66,7 @@
 
         if (navigator.clipboard && navigator.clipboard.writeText) {
             // Utiliza la API moderna si está disponible
-            navigator.clipboard.writeText(campoContraseña.value).then(function() {
-                alert('Contraseña copiada al portapapeles');
-            }).catch(function(err) {
+            navigator.clipboard.writeText(campoContraseña.value).then(function() {}).catch(function(err) {
                 console.error('Error al copiar la contraseña: ', err);
             });
         } else {

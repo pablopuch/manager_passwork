@@ -83,16 +83,13 @@
         var campo = document.getElementById(id);
 
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(campo.value).then(function() {
-                alert('Texto copiado al portapapeles');
-            }).catch(function(err) {
+            navigator.clipboard.writeText(campo.value).then(function() {}).catch(function(err) {
                 console.error('Error al copiar el texto: ', err);
             });
         } else {
             campo.select();
             campo.setSelectionRange(0, 99999); // Para dispositivos móviles
             document.execCommand('copy');
-            alert('Texto copiado al portapapeles');
         }
     }
 </script>
