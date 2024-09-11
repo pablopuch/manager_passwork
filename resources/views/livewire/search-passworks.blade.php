@@ -22,7 +22,13 @@
             <a href="{{ route('passworks.create') }}" class="btn btn-primary btn-lg d-md-none btn-float">
                 <i class="fas fa-plus"></i>
             </a>
+            
 
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
 
 
             <!-- Tabla de resultados -->

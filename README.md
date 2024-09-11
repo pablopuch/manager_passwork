@@ -42,18 +42,6 @@ Run the database migrations (**Set the database connection in .env before migrat
 
     php artisan migrate
 
-Run seed your database
-
-    php artisan db:seed
-
-Generate a key for JWT
-
-    php artisan jwt:secret
-
-Symbolic link in your application's
-
-    php artisan storage:link
-
 Start the local development server
 
     php artisan serve
@@ -72,10 +60,9 @@ Laravel Bootstrap - https://www.youtube.com/watch?v=9DU7WLZeam8&t=7587s
 
 Laravel bootstrap UI - https://www.youtube.com/watch?v=9DU7WLZeam8&t=6865s
 
-DOMPDF Wrapper for Laravel - https://www.youtube.com/watch?v=n04ic-ALRvw&t=345s 
-
 Laravel Socialite - https://www.youtube.com/watch?v=C98LvIbPSf0
 
+Livewire Docs - https://livewire.laravel.com/
 
 
 
