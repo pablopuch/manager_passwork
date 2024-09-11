@@ -1,6 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="catches\logo.png" width="400" alt="Password Logo"></a></p>
-
-# PassWord
+# PassWork
 
 It is a project that allows you to have your passwords saved and organised in a very simple way. This project is a first version (2.0)
 
