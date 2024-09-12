@@ -7,13 +7,20 @@ Passwork
 @section('content')
 <div class="container">
 
-    
+
 
     <livewire:password-generator />
-    
+
     <livewire:search-passworks />
 
+    
+    
+
+
+
 </div>
+
+
 
 
 @livewireScripts

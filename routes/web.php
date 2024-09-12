@@ -33,7 +33,6 @@ Route::get('/home', [PassworkController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [PassworkController::class, 'index'])->name('home');
-    Route::get('pdf', [PassworkController::class, 'pdf'])->name('passwork.pdf');
 });
 
 
