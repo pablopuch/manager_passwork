@@ -3,7 +3,7 @@
         <div class="col-md-10 col-lg-10">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Personalice su Contraseña</h4>
+                    <h4 class="mb-0">Personalice su contraseña</h4>
                 </div>
                 <div class="card-body">
                     <form wire:submit="generatePassword">
@@ -62,18 +62,20 @@
 
 <script>
     function copy_clipboard() {
-        var campoContraseña = document.getElementById('password');
+        var campoContraseña = document.getElementById('password'); // Obtenemos el campo de texto de la contraseña
 
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            // Utiliza la API moderna si está disponible
-            navigator.clipboard.writeText(campoContraseña.value).then(function() {}).catch(function(err) {
-                console.error('Error al copiar la contraseña: ', err);
+            // Si el navegador soporta la API de Clipboard (API moderna), usamos esta función para copiar
+            navigator.clipboard.writeText(campoContraseña.value).then(function() {
+                // Opcionalmente, podrías mostrar un mensaje de éxito aquí
+            }).catch(function(err) {
+                console.error('Error al copiar la contraseña: ', err); // Si hay algún error, se muestra en la consola
             });
         } else {
-            // Método de respaldo para navegadores antiguos
-            campoContraseña.select();
-            campoContraseña.setSelectionRange(0, 99999); // Para dispositivos móviles
-            document.execCommand('copy');
+            // Método de respaldo para navegadores más antiguos que no soportan la API Clipboard
+            campoContraseña.select(); // Seleccionamos el texto del campo
+            campoContraseña.setSelectionRange(0, 99999); // Para dispositivos móviles, aseguramos la selección completa
+            document.execCommand('copy'); // Usamos el comando `execCommand` para copiar el texto
         }
     }
 </script>

@@ -7,21 +7,15 @@ Passwork
 @section('content')
 <div class="container">
 
-
-
     <livewire:password-generator />
 
     <livewire:search-passworks />
-
-    
-    
-
-
 
 </div>
 
 
 
 
+@livewireStyles
 @livewireScripts
 @endsection

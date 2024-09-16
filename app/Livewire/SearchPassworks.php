@@ -14,6 +14,7 @@ class SearchPassworks extends Component
 
     public $search = '';
 
+
     public function updatingSearch()
     {
         $this->resetPage(); // Resetea la página cuando cambie la búsqueda

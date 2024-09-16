@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-
 class PasswordGenerator extends Component
 {
     public $password;
@@ -16,7 +15,7 @@ class PasswordGenerator extends Component
 
     public function mount()
     {
-        // Lógica para generar una contraseña automáticamente al cargar el componente
+        // Generar una contraseña automáticamente al cargar el componente
         $this->generatePassword();
     }
 
@@ -44,11 +43,28 @@ class PasswordGenerator extends Component
         // Actualizar la propiedad $password
         $this->password = $password;
 
-        // Actualizar solo la sección específica usando Livewire
+        // Disparar un evento de Livewire para la actualización de la contraseña (opcional)
         $this->dispatch('passwordGenerated', ['password' => $password]);
     }
 
-    // Método privado para generar el conjunto de caracteres basado en las preferencias del usuario
+    public function updated($propertyName)
+    {
+        // Al actualizar una propiedad, verificar que al menos una casilla esté marcada
+        $this->validateCheckboxes();
+
+        // Generar la contraseña automáticamente cuando se actualicen los valores
+        $this->generatePassword();
+    }
+
+    private function validateCheckboxes()
+    {
+        // Si el usuario desmarca todas las opciones, restaurar al menos una por defecto
+        if (!$this->useUppercase && !$this->useLowercase && !$this->useNumbers && !$this->useSymbols) {
+            // Por ejemplo, volver a marcar las minúsculas si ninguna opción está marcada
+            $this->useNumbers = true;
+        }
+    }
+
     private function generateCharacterPool()
     {
         $characters = [];

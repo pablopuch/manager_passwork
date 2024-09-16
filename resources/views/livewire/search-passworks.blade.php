@@ -12,7 +12,7 @@
 
                     <div class="col-12 col-md-4 text-md-end text-center">
                         <a href="{{ route('passworks.create') }}" class="btn btn-primary btn-lg d-none d-md-inline-block">
-                            {{ __('Crear') }}
+                            {{ __('Nueva contraseña') }}
                             <i class="fas fa-plus"></i>
                         </a>
                     </div>
@@ -22,7 +22,7 @@
             <a href="{{ route('passworks.create') }}" class="btn btn-primary btn-lg d-md-none btn-float">
                 <i class="fas fa-plus"></i>
             </a>
-            
+
 
             @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -57,13 +57,10 @@
                                             {{ __('Editar') }}
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <form action="{{ route('passworks.destroy', $passwork->id) }}" method="POST" style="display:inline-block;">
+                                        <form action="{{ route('passworks.destroy', $passwork->id) }}" method="POST" onsubmit="return confirmDelete();">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-md">
-                                                {{ __('Borrar') }}
-                                                <i class="bi bi-trash3"></i>
-                                            </button>
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
                                         </form>
                                     </div>
 
@@ -113,6 +110,10 @@
                 }
             }
             select.value = ''; // Resetear el select
+        }
+
+        function confirmDelete() {
+            return confirm('¿Estás seguro de que deseas eliminar esta contraseña?');
         }
     </script>
 

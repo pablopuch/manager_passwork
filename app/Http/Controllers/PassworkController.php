@@ -204,9 +204,13 @@ class PassworkController extends Controller
      */
     public function destroy($id)
     {
-        $passwork = Passwork::find($id)->delete();
+        $passwork = Passwork::find($id);
 
-        return redirect()->route('passworks.index')
-            ->with('success', 'Passwork deleted successfully');
+        if ($passwork) {
+            $passwork->delete();
+            return redirect()->route('passworks.index')->with('success', 'Passwork deleted successfully');
+        }
+
+        return redirect()->route('passworks.index')->with('error', 'Passwork not found');
     }
 }
