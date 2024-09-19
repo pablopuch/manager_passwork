@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassworkController;
+use App\Http\Controllers\PassgroupController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PasswordGeneratorController;
 use App\Http\Controllers\SocialiteController;
@@ -23,16 +24,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::resource('passgroups', PassgroupController::class)->middleware('auth');
+Route::resource('passgroups', PassgroupController::class)->middleware('auth');
 Route::resource('passworks', PassworkController::class)->middleware('auth');
 
-Route::post('generator', [PasswordGeneratorController::class, 'generatePassword'])->name('passwork.generate');
+// Route::post('generator', [PasswordGeneratorController::class, 'generatePassword'])->name('passwork.generate');
 
-Route::get('/home', [PassworkController::class, 'index'])->name('home');
+// Route::get('/home', [PassworkController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/', [PassworkController::class, 'index'])->name('home');
+    Route::get('/', [PassworkController::class, 'index']);
 });
 
 

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Passgroup;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Exception;
 
 
 /**
@@ -21,12 +24,14 @@ class PassgroupController extends Controller
      */
     public function index()
     {
-        $passgroups = Passgroup::paginate();
+        $user = Auth::user();
 
-        $users = User::pluck('name','id');
+        $passgroups = Passgroup::where('user_id', $user->id)
+            ->paginate(10);
 
-        return view('passgroup.index', compact('passgroups','users'))
-            ->with('i', (request()->input('page', 1) - 1) * $passgroups->perPage());
+        $users = User::pluck('name', 'id');
+
+        return view('passgroup.index', compact('passgroups', 'users'));
     }
 
     /**
@@ -42,9 +47,9 @@ class PassgroupController extends Controller
 
         $passgroup->user_id = $user->id; // Asignar el ID del usuario
 
-        $users = User::pluck('name','id');
+        $users = User::pluck('name', 'id');
 
-        return view('passgroup.create', compact('passgroup','users'));
+        return view('passgroup.create', compact('passgroup', 'users'));
     }
 
     /**
@@ -71,12 +76,35 @@ class PassgroupController extends Controller
      */
     public function show($id)
     {
-        $passgroup = Passgroup::find($id);
+        try {
+            // Encuentra el grupo de contraseñas por su ID
+            $passgroup = Passgroup::findOrFail($id);
 
-        $users = User::pluck('name','id');
+            // Obtén todas las contraseñas asociadas a este grupo
+            $passworks = $passgroup->passworks;
 
-        return view('passgroup.show', compact('passgroup', 'users'));
+            // Descifra cada contraseña antes de mostrarla
+            foreach ($passworks as $passwork) {
+                try {
+                    $passwork->password_pass = Crypt::decryptString($passwork->password_pass);
+                } catch (DecryptException $e) {
+                    logger()->error('Error decrypting password: ' . $e->getMessage());
+                    return redirect()->route('passgroups.index')->with('error', 'Error al descifrar una de las contraseñas.');
+                }
+            }
+
+            // Lista de todos los grupos y usuarios para desplegarlos en la vista
+            $passgroups = Passgroup::pluck('name', 'id');
+            $users = User::pluck('name', 'id');
+
+            return view('passgroup.show', compact('passgroup', 'passworks', 'passgroups', 'users'));
+        } catch (Exception $e) {
+            logger()->error('Error fetching group: ' . $e->getMessage());
+            return redirect()->route('passgroups.index')->with('error', 'Ocurrió un error al obtener el grupo de contraseñas.');
+        }
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -87,10 +115,10 @@ class PassgroupController extends Controller
     public function edit($id)
     {
         $passgroup = Passgroup::find($id);
-        
-        $users = User::pluck('name','id');
 
-        return view('passgroup.edit', compact('passgroup','users'));
+        $users = User::pluck('name', 'id');
+
+        return view('passgroup.edit', compact('passgroup', 'users'));
     }
 
     /**

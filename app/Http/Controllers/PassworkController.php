@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Exception;
+
 
 
 
@@ -61,7 +63,7 @@ class PassworkController extends Controller
 
         $passwork->user_id = $user->id; // Asignar el ID del usuario
 
-        $passgroups = Passgroup::pluck('name', 'id');
+        $passgroups = Passgroup::where('user_id', $user->id)->pluck('name', 'id');
 
         $users = User::pluck('name', 'id');
 
@@ -117,7 +119,8 @@ class PassworkController extends Controller
     public function show($id)
     {
         try {
-            $passwork = Passwork::find($id);
+            // Encuentra la contraseña por su ID
+            $passwork = Passwork::findOrFail($id);
 
             // Loguea la cadena cifrada antes de intentar descifrarla
             logger()->info('Encrypted password: ' . $passwork->password_pass);
@@ -128,18 +131,26 @@ class PassworkController extends Controller
             // Loguea la cadena descifrada
             logger()->info('Decrypted password: ' . $passwork->password_pass);
 
+            // Cargar el grupo asociado, si existe
+            $passgroupName = $passwork->passgroup ? $passwork->passgroup->name : '';
+
             $passgroups = Passgroup::pluck('name', 'id');
             $users = User::pluck('name', 'id');
 
-            return view('passwork.show', compact('passwork', 'passgroups', 'users'));
+            // Pasar el nombre del grupo a la vista
+            return view('passwork.show', compact('passwork', 'passgroupName', 'passgroups', 'users'));
         } catch (DecryptException $e) {
             // Loguea la excepción para obtener más información
             logger()->error('Error decrypting password: ' . $e->getMessage());
 
             // Redirige con un mensaje de error más específico
             return redirect()->route('passworks.index')->with('error', 'Error al descifrar la contraseña. Contacta al soporte para obtener ayuda.');
+        } catch (Exception $e) {
+            logger()->error('Error fetching passwork: ' . $e->getMessage());
+            return redirect()->route('passworks.index')->with('error', 'Ocurrió un error al obtener la contraseña.');
         }
     }
+
 
 
     /**

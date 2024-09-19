@@ -52,6 +52,14 @@
 
                     <button type="submit" class="btn btn-primary btn-lg w-100">Iniciar Sesión</button>
                 </form>
+
+                <!-- Enlace a la página de registro -->
+                <div class="text-center mt-4">
+                    <p>¿No tienes una cuenta?</p>
+                    <a href="{{ route('register') }}" class="btn btn-outline-primary btn-lg w-100">
+                        <i class="bi bi-person-plus"></i> Regístrate
+                    </a>
+                </div>
             </div>
         </div>
     </div>

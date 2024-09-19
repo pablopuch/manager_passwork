@@ -1,70 +1,98 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Passgroup
+Passgroup
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-10">
 
-                            <span id="card_title">
-                                {{ __('Passgroup') }}
-                            </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('passgroups.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+            <!-- Botón flotante para móviles y botón normal para pantallas grandes -->
+            <div class="d-block d-sm-none mb-4">
+                <a href="{{ route('passgroups.create') }}" class="btn btn-primary btn-floating">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </div>
+            <div class="d-none d-sm-block mb-4">
+                <a href="{{ route('passgroups.create') }}" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> {{ __('Create New') }}
+                </a>
+            </div>
+
+            <!-- Contenedor de tarjetas para los grupos -->
+            <div class="row mt-4">
+                @foreach ($passgroups as $passgroup)
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card shadow-sm border-0 rounded-lg" data-href="{{ route('passgroups.show', $passgroup->id) }}" onclick="navigateToCard(this)">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h5 class="mb-0">{{ $passgroup->name }}</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <!-- Puedes agregar más información del grupo aquí si es necesario -->
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-success me-2" href="{{ route('passgroups.edit', $passgroup->id) }}">
+                                    <i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}
                                 </a>
-                              </div>
-                        </div>
-                    </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
-
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
-										{{-- <th>User</th> --}}
-										<th>Name</th>
-										<th>Url Img</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($passgroups as $passgroup)
-                                        <tr>                                            
-											{{-- <td>{{ $passgroup->user->name }}</td> --}}
-											<td>{{ $passgroup->name }}</td>
-											<td>{{ $passgroup->url_img }}</td>
-
-                                            <td>
-                                                <form action="{{ route('passgroups.destroy',$passgroup->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('passgroups.show',$passgroup->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('passgroups.edit',$passgroup->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                <form action="{{ route('passgroups.destroy', $passgroup->id) }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {!! $passgroups->links() !!}
+                @endforeach
             </div>
+
+            <!-- Paginación -->
+            {!! $passgroups->links() !!}
         </div>
     </div>
+</div>
+
+<!-- Estilos adicionales para el botón flotante y la tarjeta -->
+<style>
+    .btn-floating {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .card {
+        cursor: pointer;
+    }
+
+    .card-header,
+    .card-footer {
+        cursor: pointer;
+    }
+
+    .card-footer .btn {
+        flex: 1;
+        max-width: 100px;
+        /* Ajusta el ancho máximo del botón si es necesario */
+    }
+
+    .card-footer .btn-success,
+    .card-footer .btn-danger {
+        width: 100px;
+        /* Establece el ancho fijo para los botones */
+    }
+</style>
+
+<script>
+    function navigateToCard(cardElement) {
+        var url = cardElement.getAttribute('data-href');
+        window.location.href = url;
+    }
+</script>
 @endsection
