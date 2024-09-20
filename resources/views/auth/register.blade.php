@@ -13,20 +13,6 @@
                     </a>
                 </div>
 
-                <!-- Registro con Google Button -->
-                <div class="text-center mb-3">
-                    <a href="/auth/google/redirect" class="btn btn-outline-secondary btn-lg btn-block">
-                        <i class="bi bi-google"></i> Regístrate con Google
-                    </a>
-                </div>
-
-                <!-- Registro con GitHub Button -->
-                <div class="text-center mb-3">
-                    <a href="/auth/github/redirect" class="btn btn-outline-secondary btn-lg btn-block">
-                        <i class="bi bi-github"></i> Regístrate con GitHub
-                    </a>
-                </div>
-
                 <!-- Divider -->
                 <div class="d-flex align-items-center my-4">
                     <hr class="flex-grow-1">

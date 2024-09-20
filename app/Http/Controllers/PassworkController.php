@@ -45,6 +45,7 @@ class PassworkController extends Controller
 
         $passgroups = Passgroup::pluck('name', 'id');
         $users = User::pluck('name', 'id');
+        $passgroups = Passgroup::all()->where('user_id', $user->id);
 
         return view('passwork.index', compact('passworks', 'passgroups', 'users'));
     }

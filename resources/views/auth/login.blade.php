@@ -20,13 +20,6 @@
                     </a>
                 </div>
 
-                <!-- Divider -->
-                <div class="d-flex align-items-center my-4">
-                    <hr class="flex-grow-1">
-                    <span class="mx-2 text-muted">O</span>
-                    <hr class="flex-grow-1">
-                </div>
-
                 <!-- Email and Password Form -->
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -52,6 +45,13 @@
 
                     <button type="submit" class="btn btn-primary btn-lg w-100">Iniciar Sesión</button>
                 </form>
+
+                <!-- Divider -->
+                <div class="d-flex align-items-center my-4">
+                    <hr class="flex-grow-1">
+                    <span class="mx-2 text-muted">O</span>
+                    <hr class="flex-grow-1">
+                </div>
 
                 <!-- Enlace a la página de registro -->
                 <div class="text-center mt-4">
